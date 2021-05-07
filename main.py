@@ -112,7 +112,7 @@ async def on_message(message):
     result = commands.which_game()
     user = message.author.id
     user = "<@%s>"%(user)
-    await message.channel.send("%s **Sen bir oyun olsaydın** \U0001F3AE \n %s \n\n%s"%(user,result[0],result[1]))
+    await message.channel.send("%s **Sen bir oyun olsaydın** \U0001F3AE \n ```fix\n%s\n```\n\n%s"%(user,result[0],result[1]))
 
   if message.content.startswith("!evlen"):
     user = message.author.id
