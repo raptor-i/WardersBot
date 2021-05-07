@@ -315,3 +315,14 @@ def get_married():
   year = int(zaman.year) + year
   result = [year , zaman.month, zaman.day]
   return result
+
+def get_salary():
+  salary = random.randint(0,100000)
+  return str(salary)
+
+def which_dog():
+  url = "https://dog.ceo/api/breeds/image/random"
+  respond = requests.get(url)
+  jsondata = json.loads(respond.text)
+  return jsondata["message"]
+
