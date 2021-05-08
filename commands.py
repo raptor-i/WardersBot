@@ -4,6 +4,8 @@ import random
 from datetime import date
 import datetime
 
+#Commands for version 0.1 ____________________________
+
 def get_quote():
   response = requests.get("https://zenquotes.io/api/random")
   json_data = json.loads(response.text)
@@ -311,9 +313,11 @@ def which_game():
 
 def get_married():
   zaman = datetime.datetime.now()
-  year = random.randint(0,15)
+  year = random.randint(0,20)
   year = int(zaman.year) + year
-  result = [year , zaman.month, zaman.day]
+  month = random.randint(0,12)
+  day = random.randint(0,30)
+  result = [year , str(month), str(day)]
   return result
 
 def get_salary():

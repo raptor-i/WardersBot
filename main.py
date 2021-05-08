@@ -1,14 +1,14 @@
 import os
 import discord
 import commands
-
+import commands2
 
 client = discord.Client()
 
 @client.event
 async def on_ready():
   print("Successfully logged on {0.user}".format(client))
- 
+  
 
 @client.event
 async def on_message(message):
@@ -19,7 +19,7 @@ async def on_message(message):
     await message.channel.send(commands.get_quote())
 
   if message.content.startswith("!yardim"):
-    await message.channel.send("Komutlar : \n!sa  -*Müslüman bot selam alır*\n!alıntı  -*Rastgele özlü söz yazar*\n!covid  -*Türkiye Covid-19 istatistiklerini gösterir*\n!muz  -*Gerçek hesaplamalar sonucu temsili malafat döndürür*\n!ver  -*Bot versiyon*\n!love  -*2 isim yazarak aralarındaki aşkı ölçer (!love isim1 isim2)*\n!cevir  -*İngilizce metinleri Türkçeye çevirir*\n!tokat  -*Bir arkadaşınızı etiketleyerek tokatlarsınız (!tokat @isim)*\n!valo  -*Valorant performansınızı görüntüler*\n!csgo  -*Cs go hakkında bilinmeyen gerçekleri söyler*\n!oyun  -*Hangi oyun olduğunuzu söyler*\n!evlen  -*Ne zaman evleneceğinizi söyler*\n!maas  -*Maaşınızı yazar*\n!kopek  -*Hangi köpek olduğunuzu gösterir*\n!Daha fazla komut için çalışıyoruz...")
+    await message.channel.send("Komutlar : \n!sa  -*Müslüman bot selam alır*\n!alıntı  -*Rastgele özlü söz yazar*\n!covid  -*Türkiye Covid-19 istatistiklerini gösterir*\n!muz  -*Gerçek hesaplamalar sonucu temsili malafat döndürür*\n!ver  -*Bot versiyon*\n!love  -*2 isim yazarak aralarındaki aşkı ölçer (!love isim1 isim2)*\n!cevir  -*İngilizce metinleri Türkçeye çevirir*\n!tokat  -*Bir arkadaşınızı etiketleyerek tokatlarsınız (!tokat @isim)*\n!valo  -*Valorant performansınızı görüntüler*\n!csgo  -*Cs go hakkında bilinmeyen gerçekleri söyler*\n!oyun  -*Hangi oyun olduğunuzu söyler*\n!vs  -*1V1 atarak kimin daha iyi olduğunu öğrenin (!vs @nick)*\n!evlen  -*Ne zaman evleneceğinizi söyler*\n!maas  -*Maaşınızı yazar*\n!kopek  -*Hangi köpek olduğunuzu gösterir*\n!Daha fazla komut için çalışıyoruz...")
 
   if message.content.startswith("!sa"):
     await message.channel.send("as")
@@ -137,4 +137,9 @@ async def on_message(message):
     await message.channel.send("\n%s ***Bir köpek olsaydı \U0001F436	:***\n"%(user))
     await message.channel.send("%s"%(result))
     
+  if message.content.startswith("!vs"):
+    result = commands2.do_vs(message)
+    await message.channel.send("\n\n%s \t\t\t\t\t **VS** \t\t\t\t\t %s\n\nSeçilen Silah : **%s**\t\t\t\t\tSeçilen Silah : **%s**\n\nArmor : **%s**\t\t\t\t\tArmor : **%s**\n\nKalan Can : **%d**\t\t\t\t\t\t\t\tKalan Can : **%d**\n"%(result[7],result[8],result[0],result[3],result[1],result[4],result[2],result[5]))
+
+    await message.channel.send("%s"%(result[9]))
 client.run(os.getenv("TOKEN"))
