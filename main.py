@@ -15,16 +15,16 @@ async def on_message(message):
   if message.author == client.user:
     return
 
-  if message.content.startswith("!alıntı" or "!alinti"):
+  if message.content.startswith("!alıntı"):
     await message.channel.send(commands.get_quote())
 
-  if message.content.startswith("!yardim" or "!yardım"):
+  if message.content.startswith("!yardim"):
     await message.channel.send("Komutlar : \n!sa  -*Müslüman bot selam alır*\n!alıntı  -*Rastgele özlü söz yazar*\n!covid  -*Türkiye Covid-19 istatistiklerini gösterir*\n!muz  -*Gerçek hesaplamalar sonucu temsili malafat döndürür*\n!ver  -*Bot versiyon*\n!love  -*2 isim yazarak aralarındaki aşkı ölçer (!love isim1 isim2)*\n!cevir  -*İngilizce metinleri Türkçeye çevirir*\n!tokat  -*Bir arkadaşınızı etiketleyerek tokatlarsınız (!tokat @isim)*\n!valo  -*Valorant performansınızı görüntüler*\n!csgo  -*Cs go hakkında bilinmeyen gerçekleri söyler*\n!oyun  -*Hangi oyun olduğunuzu söyler*\n!vs  -*1V1 atarak kimin daha iyi olduğunu öğrenin (!vs @nick)*\n!evlen  -*Ne zaman evleneceğinizi söyler*\n!maas  -*Maaşınızı yazar*\n!kopek  -*Hangi köpek olduğunuzu gösterir*\n!warders  -*Warders nedir?*\n!ulke  -*Tekrar Doğsaydınız hangi ülkeli olurdunuz?*\n!Daha fazla komut için çalışıyoruz...")
 
   if message.content.startswith("!sa"):
     await message.channel.send("as")
 
-  if message.content.startswith("!covid" or "!kovid"):
+  if message.content.startswith("!covid"):
     datas = commands.get_covid()
     await message.channel.send("\U0001F4CA Covid-19 Verileri Türkiye \U0001F1F9\U0001F1F7\n\n\U0001F6A9 Toplam Vaka : %d\n\U00002755 Toplam Ölüm : %d\n\U00002705 Toplam İyileşen : %d\n\n\U0001F7E5 Bugünkü Vaka : %d\n\U000026A0 Bugünkü Ölüm : %d\n\n\U0001F4C5 Tarih : %s"%(datas[0],datas[1],datas[2],datas[3],datas[4],datas[5])) 
 
@@ -84,7 +84,7 @@ async def on_message(message):
     await message.channel.send(" **%s** \U0001F970 **%s** \n\n\U0001F4C8 Aşk oranı : **%s**\U00002665\n\n\U0001F4DD Yorumum : **%s**\n\n"%(result["fname"],result["sname"],yuzde,yorum))
     await message.channel.send(gif)
 
-  if message.content.startswith("!cevir" or "!çevir"):
+  if message.content.startswith("!___cevir"):
     mesaj =message.content.split(" ")
     mesaj.remove("!cevir")
     messaj = ""
@@ -124,13 +124,13 @@ async def on_message(message):
     result = commands.get_married()
     await message.channel.send("\n\n%s ***'in Evleneceği Tarih	:*** ```fix\n%s.%s.%s\n```\U0001F935\U0001F470"%(user,result[2],result[1],result[0]))
 
-  if message.content.startswith("!maas" or "!maaş"):
+  if message.content.startswith("!maas"):
     user = message.author.id
     user = "<@%s>"%(user)
     result = commands.get_salary()
     await message.channel.send("%s**'in Maaşı :**\n ```css\n%s TL\n```"%(user,result))
 
-  if message.content.startswith("!kopek" or "!köpek"):
+  if message.content.startswith("!kopek"):
     user = message.author.id
     user = "<@%s>"%(user)
     result = commands.which_dog()
@@ -139,14 +139,14 @@ async def on_message(message):
     
   if message.content.startswith("!vs"):
     result = commands2.do_vs(message)
-    await message.channel.send("\n\n%s \t\t\t\t\t **VS** \t\t\t\t\t %s\n\nSeçilen Silah : **%s**\t\t\t\t\tSeçilen Silah : **%s**\n\nArmor : **%s**\t\t\t\t\tArmor : **%s**\n\nKalan Can : **%d**\t\t\t\t\t\t\t\tKalan Can : **%d**\n"%(result[8],result[7],result[0],result[3],result[1],result[4],result[2],result[5]))
+    await message.channel.send("\n\n%s \t\t\t\t\t **VS** \t\t\t\t\t %s\n\nSeçilen Silah : **%15s**\t\t\t\t\tSeçilen Silah : **%15s**\n\nArmor : **%15s**\t\t\t\t\tArmor : **%15s**\n\nKalan Can : **%10d**\t\t\t\t\t\t\t\tKalan Can : **%10d**\n"%(result[8],result[7],result[0],result[3],result[1],result[4],result[2],result[5]))
 
     await message.channel.send("%s"%(result[9]))
   
   if message.content.startswith("!warders"):
     await message.channel.send("\n```fix\nHayatımın Anlamı \U0001F49B \U0001F5A4\n```")
 
-  if message.content.startswith("!ulke" or "!ülke"):
+  if message.content.startswith("!ulke"):
     user = message.author.id
     user = "<@%s>"%(user)
     result = commands2.Get_Countries()

@@ -51,7 +51,6 @@ def do_vs(message):
         user0_health = int(user0_health)
         user1_health = int(user1_health)
         continue
-
   gif = ["https://i.ytimg.com/vi/3xT4XydSFAI/sddefault.jpg",
     "https://i.ytimg.com/vi/Ub6Yfb_zpCI/maxresdefault.jpg"]
 
@@ -59,10 +58,13 @@ def do_vs(message):
   if(user0_status == 0):
     Sonuc = Sonuc[0]
     gif = gif[0]
+    user0_health = 0
   else:
     Sonuc = Sonuc[1]
     gif = gif[1]
     user1_health = 0
+  if(Sonuc == "WIN" and user0_health < 0):
+    user0_health = user0_health*-1
   user0_gun = random.choice(guns)
   user1_gun = random.choice(guns)
   fight_len = random.choice(Lenght)

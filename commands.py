@@ -315,14 +315,16 @@ def get_married():
   zaman = datetime.datetime.now()
   year = random.randint(0,20)
   year = int(zaman.year) + year
-  month = random.randint(0,12)
-  day = random.randint(0,30)
+  month = random.randint(1,12)
+  day = random.randint(1,30)
   result = [year , str(month), str(day)]
   return result
 
 def get_salary():
-  salary = random.randint(0,100000)
-  return str(salary)
+  salary = [random.randint(0,1000),random.randint(1000,5000),
+  random.randint(5000,10000),random.randint(10000,30000),
+  random.randint(30000,50000),random.randint(50000,100000)]
+  return str(salary[random.randint(0,5)])
 
 def which_dog():
   url = "https://dog.ceo/api/breeds/image/random"
