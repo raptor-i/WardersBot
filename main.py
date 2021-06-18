@@ -6,10 +6,12 @@ import commands2
 
 client = discord.Client()
 
+
+
 @client.event
 async def on_ready():
   print("Successfully logged on {0.user}".format(client))
-
+  discord.Game("!yardim")
 @client.event
 async def on_message(message):
   if message.author == client.user:

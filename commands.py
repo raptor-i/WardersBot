@@ -31,7 +31,8 @@ def get_covid():
   return datas
   
 def get_Banana():
-  lenght = random.randint(0,20)
+  prob = [(random.randint(0,5)),(random.randint(5,10)),(random.randint(10,15)),(random.randint(15,20))]
+  lenght = prob[random.randint(0,3)]
   return ")" + lenght * "=" + ">"
 
 def calc_Love(fname,sname):
@@ -306,9 +307,7 @@ def which_game():
   "https://cdn.akamai.steamstatic.com/steam/apps/730/capsule_616x353.jpg?t=1612812939",]
 
   index = random.randint(0,101)
-  games = games[index]
-  gifs = gifs[index]
-  result = [games,gifs]
+  result = [games[index],gifs[index]]
   return result
 
 def get_married():
