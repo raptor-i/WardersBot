@@ -1,1 +1,1 @@
-# WardersBot
+# WardersBot is a Discord Bot
