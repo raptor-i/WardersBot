@@ -10,6 +10,7 @@ client = commands.Bot(command_prefix = "!")
 
 @client.event
 async def on_ready():
+  await client.change_presence(activity = discord.Game(name="V0.2   !yardim"))
   print("Successfully logged on {0.user}".format(client))
 
 @client.command()
@@ -20,8 +21,8 @@ async def wanted(ctx, user : discord.Member = None):
   asset = ctx.author.avatar_url_as(size = 128)
   data = BytesIO(await asset.read())
   pfp = Image.open(data)
-  pfp = pfp.resize((382,296))
-  Wanted.paste(pfp, (42,220))
+  pfp = pfp.resize((255,255))
+  Wanted.paste(pfp, (98,201))
   Wanted.save("stuffs//wanted.jpg")
   await ctx.send(file = discord.File("stuffs//wanted.jpg"))
 
@@ -152,7 +153,8 @@ async def on_message(message):
     
   if message.content.startswith("!vs"):
     result = comms2.do_vs(message)
-    await message.channel.send("\n\n%s \t\t\t\t\t **VS** \t\t\t\t\t %s\n\nSeçilen Silah : **%15s**\t\t\t\t\tSeçilen Silah : **%15s**\n\nArmor : **%15s**\t\t\t\t\tArmor : **%15s**\n\nKalan Can : **%10d**\t\t\t\t\t\t\t\tKalan Can : **%10d**\n"%(result[8],result[7],result[0],result[3],result[1],result[4],result[2],result[5]))
+    liste = ["Seçilen Silah", "Armor","Kalan Can"]
+    await message.channel.send("\n\n%s \t\t\t\t\t **VS** \t\t\t\t\t %s\n\n%-15s : **%-15s**\t\t\t\t\t%-15s : **%-15s**\n\n%-17s : **%-15s**\t\t\t\t%-17s : **%-15s**\n\n%-13s : **%-10d**\t\t\t\t\t\t\t\t%-13s : **%-10d**\n"%(result[8],result[7],liste[0],result[0],liste[0],result[3],liste[1],result[1],liste[1],result[4],liste[2],result[2],liste[2],result[5]))
 
     await message.channel.send("%s"%(result[9]))
   
